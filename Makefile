@@ -3,9 +3,9 @@
 
 CFLAGS=-Wall -g
 
-all: ex1
+all: ex1 ex3
 
 clean:
-	rm -f ex*[0-9]*
+	rm -f ex*[0-9]
 
 
