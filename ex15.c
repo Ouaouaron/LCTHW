@@ -18,12 +18,12 @@ int main(int argc, char *argv[]) {
     printf("---\n");
 
     // setup the pointers to the start of the arrays
-    int *cur_age = ages+(sizeof(int)*(count-1));
-    char **cur_name = names+(sizeof(int)*(count-1));
+    int *end_age = ages+(count-1);
+    char **end_name = names+(count-1);
 
     // second way using pointers
     for(i = 0; i < count; i++) {
-        printf("%s is %d years old.\n", *(cur_name-i), *(cur_age-i));
+        printf("%s is %d years old.\n", *(end_name-i), *(end_age-i));
     }
 
     printf("---\n");
@@ -31,17 +31,17 @@ int main(int argc, char *argv[]) {
     // third way, pointers are just arrays
     int *cur_age = ages;
     char **cur_name = names;
-    for(i = count-1; i >= 0; i--;) {
+    for(i = count-1; i >= 0; i--) {
         printf("%s is %d years old again.\n", cur_name[i], cur_age[i]);
     }
 
     printf("---\n");
 
     // fourth way with pointers in a stupid complex way
-    for(cur_name = names[count-1], cur_age = ages[count-1];
-            (cur_age - ages) == 0;
-            cur_name--, cur_age--) {
-        printf("%s lived %d years so far.\n", *cur_name, *cur_age);
+    for(;
+            (end_age - ages) >= 0;
+            end_name--, end_age--) {
+        printf("%s lived %d years so far.\n", *end_name, *end_age);
     }
 
     return 0;
